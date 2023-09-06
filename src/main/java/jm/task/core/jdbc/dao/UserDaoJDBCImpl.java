@@ -25,7 +25,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 " age TINYINT NOT NULL);";
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
-            System.out.println("Table is created!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,7 +35,6 @@ public class UserDaoJDBCImpl implements UserDao {
         String sql = "DROP TABLE users";
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
-            System.out.println("Table is dropped!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -50,7 +48,6 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.setString(2, lastName);
             statement.setByte(3, age);
             statement.executeUpdate();
-            System.out.println("Save is ok!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -62,7 +59,6 @@ public class UserDaoJDBCImpl implements UserDao {
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setLong(1, id);
             statement.executeUpdate();
-            System.out.println("User with id = " + id + " deleted!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -79,7 +75,6 @@ public class UserDaoJDBCImpl implements UserDao {
                         resultSet.getString("lastName"),
                         resultSet.getByte("age")));
             }
-            System.out.println("Select is OK!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -91,7 +86,6 @@ public class UserDaoJDBCImpl implements UserDao {
         String sql = "TRUNCATE TABLE users";
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
-            System.out.println("Table is clear!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
